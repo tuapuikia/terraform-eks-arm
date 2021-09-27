@@ -1,0 +1,36 @@
+apiVersion: "agones.dev/v1"
+kind: Fleet
+metadata:
+  name: supertuxkart-x86
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    spec:
+      ports:
+      - name: default
+        containerPort: 8080
+      health:
+        initialDelaySeconds: 30
+        periodSeconds: 5
+        failureThreshold: 2
+      template:
+        spec:
+          containers:
+          - name: supertuxkart
+            image: public.ecr.aws/stanwong/supertuxkart:0.2
+            resources:
+              limits:
+                cpu: "1"
+                memory: "1G"
+            env:
+              - name: ENABLE_PLAYER_TRACKING
+                value: 'false'
+          nodeSelector:
+            role: x86-worker
+          tolerations:
+          - key: agones.dev/agones-system
+            operator: Equal
+            effect: NoExecute
+            value: "true"
