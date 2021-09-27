@@ -18,15 +18,14 @@
 
 // Install latest version of agones
 
-data "aws_ami" "arm_worker_ami" { 
-  filter { 
-    name = "name" 
-    values = ["amazon-eks-arm64-node-${var.eks_cluster_version}-v*"] 
-  } 
-  most_recent = true 
+data "aws_ami" "arm_worker_ami" {
+  filter {
+    name = "name"
+    values = ["amazon-eks-arm64-node-${var.eks_cluster_version}-v*"]
+  }
+  most_recent = true
   owners = ["602401143452"]
 }
-
 
 variable "agones_version" {
   default = "1.17.0"
