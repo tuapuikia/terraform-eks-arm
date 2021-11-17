@@ -144,6 +144,11 @@ resource "helm_release" "agones" {
   }
 
   set {
+    name  = "agones.allocator.http.serviceType"
+    value = var.agones_allocator_http_serviceType
+  }
+
+  set {
     name  = "agones.crds.cleanupOnDelete"
     value = "false"
   }

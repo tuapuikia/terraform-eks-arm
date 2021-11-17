@@ -101,3 +101,6 @@ variable "agones_allocator_nodeSelector" {
   default = ""
 }
 
+variable "agones_allocator_http_serviceType" {
+  default = "LoadBalancer"
+}

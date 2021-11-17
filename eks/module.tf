@@ -100,6 +100,9 @@ variable "agones_allocator_nodeSelector" {
   default = "x86-worker"
 }
 
+variable "agones_allocator_http_serviceType" {
+  default = "LoadBalancer"
+}
 
 module "eks_cluster" {
   source = "../modules/eks"
@@ -138,6 +141,7 @@ module "helm_agones" {
   agones_controller_nodeSelector  = var.agones_controller_nodeSelector
   agones_ping_nodeSelector        = var.agones_ping_nodeSelector
   agones_allocator_nodeSelector   = var.agones_allocator_nodeSelector
+  agones_allocator_http_serviceType = var.agones_allocator_http_serviceType
 
 }
 
