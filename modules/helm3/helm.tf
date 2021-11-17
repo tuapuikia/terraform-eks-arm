@@ -149,6 +149,11 @@ resource "helm_release" "agones" {
   }
 
   set {
+    name  = "agones.allocator.disableMTLS"
+    value = var.agones_allocator_disableMTLS
+  }
+
+  set {
     name  = "agones.crds.cleanupOnDelete"
     value = "false"
   }

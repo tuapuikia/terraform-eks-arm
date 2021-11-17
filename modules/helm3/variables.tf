@@ -104,3 +104,7 @@ variable "agones_allocator_nodeSelector" {
 variable "agones_allocator_http_serviceType" {
   default = "LoadBalancer"
 }
+
+variable "agones_allocator_disableMTLS" {
+  default = "false"
+}
