@@ -163,6 +163,7 @@ module "eks" {
       public_ip                     = true
       key_name                      = var.key_name
       kubelet_extra_args   = "--node-labels=role=mgmt-worker"
+      bootstrap_extra_args = "--container-runtime containerd"
     },
     {
       name                          = "x86-node"
@@ -174,6 +175,7 @@ module "eks" {
       public_ip                     = true
       key_name                      = var.key_name
       kubelet_extra_args   = "--node-labels=agones.dev/agones-system=true,role=x86-worker --register-with-taints=agones.dev/agones-system=true:NoExecute"
+      bootstrap_extra_args = "--container-runtime containerd"
     },
     {
       name                          = "arm-node"
@@ -187,6 +189,7 @@ module "eks" {
       public_ip                     = true
       key_name                      = var.key_name
       kubelet_extra_args   = "--node-labels=agones.dev/agones-system=true,role=arm-worker --register-with-taints=agones.dev/agones-system=true:NoExecute"
+      bootstrap_extra_args = "--container-runtime containerd"
     }
   ]
 
